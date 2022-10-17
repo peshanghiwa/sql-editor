@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: white;
 }
 
 .btn {
@@ -61,7 +62,7 @@
   left: 0;
   top: 0;
   transition: opacity 0.4s;
-  background-color: #ecdbba;
+  background-color: #c84b31;
   opacity: 0;
   z-index: 1;
 }

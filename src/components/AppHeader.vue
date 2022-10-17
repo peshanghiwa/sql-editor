@@ -1,8 +1,13 @@
-<script setup></script>
+<script setup>
+import useSplitpaneConfig from "../composables/splitpaneConfig";
+
+const { toggleSidebar, toggleEditorDirection, editorDirection } =
+  useSplitpaneConfig();
+</script>
 
 <template>
   <header>
-    <button class="btn btn-primary burger-button">
+    <button @click="toggleSidebar" class="btn btn-primary burger-button">
       <img src="./../assets/menu.svg" height="20" width="20" alt="" />
     </button>
 
@@ -23,8 +28,24 @@
 
     <div class="spacer"></div>
 
-    <button class="btn btn-secondary action-button">
-      <img src="./../assets/horizontal.svg" height="20" width="20" alt="" />
+    <button
+      @click="toggleEditorDirection"
+      class="btn btn-secondary action-button"
+    >
+      <img
+        v-if="editorDirection !== 'horizontal'"
+        src="./../assets/horizontal.svg"
+        height="20"
+        width="20"
+        alt=""
+      />
+      <img
+        v-else
+        src="./../assets/vertical.svg"
+        height="20"
+        width="20"
+        alt=""
+      />
     </button>
     <button class="btn btn-primary">Login</button>
   </header>

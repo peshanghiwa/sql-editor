@@ -1,17 +1,27 @@
 <script setup>
 import AppHeader from "./components/AppHeader.vue";
+import useSplitpaneConfig from "./composables/splitpaneConfig";
+
+const { isSidebarOpen, editorDirection } = useSplitpaneConfig();
 </script>
 
 <template>
   <main>
     <AppHeader />
-    <section class="editor-body">
+    <section>
       <splitpanes vertical>
-        <pane size="20" min-size="15" max-size="40">
+        <pane v-if="isSidebarOpen" size="20" min-size="15" max-size="40">
           <span>1</span>
         </pane>
         <pane>
-          <span>3</span>
+          <splitpanes :horizontal="editorDirection === 'horizontal'">
+            <pane min-size="10">
+              <span>2</span>
+            </pane>
+            <pane min-size="10">
+              <span>3</span>
+            </pane>
+          </splitpanes>
         </pane>
       </splitpanes>
     </section>
@@ -24,7 +34,7 @@ main {
   height: 100vh;
 }
 
-section.editor-body {
+section {
   height: calc(100% - 50px);
   width: 100%;
 }
