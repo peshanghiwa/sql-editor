@@ -1,5 +1,80 @@
+/* Global Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.btn {
+  border: none;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  padding-inline: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background-color: #c84b31;
+}
+
+.btn-primary:hover {
+  background-color: #b43d25;
+}
+
+.btn-primary:active {
+  background-color: #942b16;
+}
+
+.btn-secondary {
+  background-color: transparent;
+}
+
+.btn-secondary:hover {
+  background-color: #c84b31;
+}
+
+.btn-secondary:active {
+  background-color: #942b16;
+}
+
+.spacer {
+  width: 100%;
+}
+
+/* Splitpane package styles */
+.splitpanes {
+  background-color: #191919;
+}
+
+.splitpanes__splitter {
+  background-color: #ecdbba;
+  position: relative;
+}
+.splitpanes__splitter:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: opacity 0.4s;
+  background-color: #ecdbba;
+  opacity: 0;
+  z-index: 1;
+}
+.splitpanes__splitter:hover:before {
+  opacity: 1;
+}
+.splitpanes--vertical > .splitpanes__splitter:before {
+  left: -3px;
+  right: -3px;
+  height: 100%;
+}
+.splitpanes--horizontal > .splitpanes__splitter:before {
+  top: -3px;
+  bottom: -3px;
+  width: 100%;
 }
