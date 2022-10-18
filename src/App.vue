@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import AppHeader from "./components/AppHeader.vue";
+import SqlEditor from "./components/SqlEditor.vue";
 import useSplitpaneConfig from "./composables/splitpaneConfig";
 
 const { isSidebarOpen, editorDirection, isLogPaneOpen } = useSplitpaneConfig();
@@ -81,7 +82,7 @@ const logPaneSize = ref(30);
             <pane min-size="15">
               <splitpanes :horizontal="editorDirection === 'horizontal'">
                 <pane min-size="15">
-                  <span>4</span>
+                  <SqlEditor />
                 </pane>
                 <pane min-size="15">
                   <span>5</span>
