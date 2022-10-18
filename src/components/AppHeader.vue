@@ -26,6 +26,11 @@ const { toggleSidebar, toggleEditorDirection, editorDirection, toggleLogPane } =
       <span class="button-text"> Save </span>
     </button>
 
+    <button class="btn btn-secondary action-button">
+      <img src="./../assets/format.svg" height="14" width="14" alt="" />
+      <span class="button-text"> Beautify </span>
+    </button>
+
     <button @click="toggleLogPane" class="btn btn-secondary action-button">
       <img src="./../assets/logs.svg" height="15" width="15" alt="" />
       <span class="button-text"> Logs </span>
