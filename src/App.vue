@@ -6,7 +6,6 @@ import useSplitpaneConfig from "./composables/splitpaneConfig";
 const { isSidebarOpen, editorDirection } = useSplitpaneConfig();
 
 const sidebarPaneSizes = ref([94, 1.5, 1.5]);
-
 const onSidebarPaneButtonClick = (paneNumber) => {
   sidebarPaneSizes.value.forEach((size, index) => {
     if (index === paneNumber) {
@@ -16,7 +15,6 @@ const onSidebarPaneButtonClick = (paneNumber) => {
     }
   });
 };
-
 const onSidebarPaneResized = (event) => {
   sidebarPaneSizes.value.forEach((size, index) => {
     sidebarPaneSizes.value[index] = event[index].size;
@@ -30,10 +28,7 @@ const onSidebarPaneResized = (event) => {
     <section>
       <splitpanes vertical>
         <pane v-if="isSidebarOpen" size="20" min-size="15" max-size="40">
-          <splitpanes
-            @resized="onSidebarPaneResized"
-            :horizontal="editorDirection === 'horizontal'"
-          >
+          <splitpanes @resized="onSidebarPaneResized" horizontal="horizontal">
             <pane :size="sidebarPaneSizes[0]" min-size="2.5">
               <button
                 @click="onSidebarPaneButtonClick(0)"
