@@ -5,7 +5,11 @@ const { editorInput } = useSqlEditorConfig();
 
 <template>
   <div class="sql-editor-container">
-    <textarea v-model="editorInput" class="editor"></textarea>
+    <textarea
+      placeholder="Enter SQL expresion here..."
+      v-model="editorInput"
+      class="editor"
+    ></textarea>
   </div>
 </template>
 

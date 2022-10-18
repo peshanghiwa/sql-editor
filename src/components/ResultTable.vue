@@ -17,7 +17,7 @@ const showFullColumn = (columnName) => {
 
 <template>
   <div class="result-table-container">
-    <table>
+    <table v-if="users.length !== 0">
       <tr class="table-header">
         <th>#</th>
         <th>Id</th>
