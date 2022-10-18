@@ -3,7 +3,7 @@ import { ref } from "vue";
 import AppHeader from "./components/AppHeader.vue";
 import useSplitpaneConfig from "./composables/splitpaneConfig";
 
-const { isSidebarOpen, editorDirection } = useSplitpaneConfig();
+const { isSidebarOpen, editorDirection, isLogPaneOpen } = useSplitpaneConfig();
 
 const sidebarPaneSizes = ref([94, 1.5, 1.5]);
 const onSidebarPaneButtonClick = (paneNumber) => {
@@ -20,6 +20,8 @@ const onSidebarPaneResized = (event) => {
     sidebarPaneSizes.value[index] = event[index].size;
   });
 };
+
+const logPaneSize = ref(30);
 </script>
 
 <template>
@@ -56,12 +58,26 @@ const onSidebarPaneResized = (event) => {
           </splitpanes>
         </pane>
         <pane>
-          <splitpanes :horizontal="editorDirection === 'horizontal'">
+          <splitpanes
+            horizontal
+            @resized="
+              (event) => {
+                event[1] ? (logPaneSize = event[1].size) : null;
+              }
+            "
+          >
             <pane min-size="15">
-              <span>4</span>
+              <splitpanes :horizontal="editorDirection === 'horizontal'">
+                <pane min-size="15">
+                  <span>4</span>
+                </pane>
+                <pane min-size="15">
+                  <span>5</span>
+                </pane>
+              </splitpanes>
             </pane>
-            <pane min-size="15">
-              <span>5</span>
+            <pane :size="logPaneSize" v-if="isLogPaneOpen">
+              <span>6</span>
             </pane>
           </splitpanes>
         </pane>

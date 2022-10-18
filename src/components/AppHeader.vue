@@ -1,7 +1,7 @@
 <script setup>
 import useSplitpaneConfig from "../composables/splitpaneConfig";
 
-const { toggleSidebar, toggleEditorDirection, editorDirection } =
+const { toggleSidebar, toggleEditorDirection, editorDirection, toggleLogPane } =
   useSplitpaneConfig();
 </script>
 
@@ -24,6 +24,11 @@ const { toggleSidebar, toggleEditorDirection, editorDirection } =
     <button class="btn btn-secondary action-button">
       <img src="./../assets/save.svg" height="14" width="14" alt="" />
       <span class="button-text"> Save </span>
+    </button>
+
+    <button @click="toggleLogPane" class="btn btn-secondary action-button">
+      <img src="./../assets/logs.svg" height="15" width="15" alt="" />
+      <span class="button-text"> Logs </span>
     </button>
 
     <div class="spacer"></div>

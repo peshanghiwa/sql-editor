@@ -3,6 +3,7 @@ import { reactive, toRefs, computed } from "vue";
 const data = reactive({
   isSidebarOpen: true,
   editorDirection: "horizontal",
+  isLogPaneOpen: false,
 });
 
 const toggleSidebar = () => {
@@ -14,8 +15,13 @@ const toggleEditorDirection = () => {
     data.editorDirection === "horizontal" ? "vertical" : "horizontal";
 };
 
+const toggleLogPane = () => {
+  data.isLogPaneOpen = !data.isLogPaneOpen;
+};
+
 const isSidebarOpen = computed(() => data.isSidebarOpen);
 const editorDirection = computed(() => data.editorDirection);
+const isLogPaneOpen = computed(() => data.isLogPaneOpen);
 
 export default () => ({
   ...toRefs(data),
@@ -23,4 +29,6 @@ export default () => ({
   isSidebarOpen,
   toggleEditorDirection,
   editorDirection,
+  toggleLogPane,
+  isLogPaneOpen,
 });
