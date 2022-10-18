@@ -1,8 +1,11 @@
-<script setup></script>
+<script setup>
+import useSqlEditorConfig from "../composables/sqlEditorConfig";
+const { editorInput } = useSqlEditorConfig();
+</script>
 
 <template>
   <div class="sql-editor-container">
-    <textarea name="" id="" class="editor"></textarea>
+    <textarea v-model="editorInput" class="editor"></textarea>
   </div>
 </template>
 

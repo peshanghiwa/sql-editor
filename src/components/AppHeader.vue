@@ -1,8 +1,10 @@
 <script setup>
 import useSplitpaneConfig from "../composables/splitpaneConfig";
-
+import useSqlEditorConfig from "../composables/sqlEditorConfig";
 const { toggleSidebar, toggleEditorDirection, editorDirection, toggleLogPane } =
   useSplitpaneConfig();
+
+const { beautifyEditorInput } = useSqlEditorConfig();
 </script>
 
 <template>
@@ -26,7 +28,10 @@ const { toggleSidebar, toggleEditorDirection, editorDirection, toggleLogPane } =
       <span class="button-text"> Save </span>
     </button>
 
-    <button class="btn btn-secondary action-button">
+    <button
+      @click="beautifyEditorInput"
+      class="btn btn-secondary action-button"
+    >
       <img src="./../assets/format.svg" height="14" width="14" alt="" />
       <span class="button-text"> Beautify </span>
     </button>
