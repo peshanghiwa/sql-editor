@@ -3,6 +3,7 @@ import { ref } from "vue";
 import AppHeader from "./components/AppHeader.vue";
 import SqlEditor from "./components/SqlEditor.vue";
 import useSplitpaneConfig from "./composables/splitpaneConfig";
+import ErrorLogger from "./components/ErrorLogger.vue";
 
 const { isSidebarOpen, editorDirection, isLogPaneOpen } = useSplitpaneConfig();
 
@@ -22,7 +23,7 @@ const onSidebarPaneResized = (event) => {
   });
 };
 
-const logPaneSize = ref(30);
+const logPaneSize = ref(20);
 </script>
 
 <template>
@@ -89,8 +90,12 @@ const logPaneSize = ref(30);
                 </pane>
               </splitpanes>
             </pane>
-            <pane :size="logPaneSize" v-if="isLogPaneOpen">
-              <span>6</span>
+            <pane
+              :size="logPaneSize"
+              v-if="isLogPaneOpen"
+              class="error-log-pane"
+            >
+              <ErrorLogger />
             </pane>
           </splitpanes>
         </pane>
@@ -117,7 +122,8 @@ section {
   cursor: pointer;
 }
 
-.sidebar-pane {
+.sidebar-pane,
+.error-log-pane {
   background-color: #232323;
 }
 </style>
