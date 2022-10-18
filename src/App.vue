@@ -4,6 +4,7 @@ import AppHeader from "./components/AppHeader.vue";
 import SqlEditor from "./components/SqlEditor.vue";
 import useSplitpaneConfig from "./composables/splitpaneConfig";
 import ErrorLogger from "./components/ErrorLogger.vue";
+import ResultTable from "./components/ResultTable.vue";
 
 const { isSidebarOpen, editorDirection, isLogPaneOpen } = useSplitpaneConfig();
 
@@ -86,7 +87,7 @@ const logPaneSize = ref(20);
                   <SqlEditor />
                 </pane>
                 <pane min-size="15">
-                  <span>5</span>
+                  <ResultTable />
                 </pane>
               </splitpanes>
             </pane>
