@@ -5,14 +5,15 @@ import SqlEditor from "./components/SqlEditor.vue";
 import useSplitpaneConfig from "./composables/splitpaneConfig";
 import ErrorLogger from "./components/ErrorLogger.vue";
 import ResultTable from "./components/ResultTable.vue";
+import EditorTabs from "./components/EditorTabs.vue";
 
 const { isSidebarOpen, editorDirection, isLogPaneOpen } = useSplitpaneConfig();
 
-const sidebarPaneSizes = ref([94, 1.5, 1.5]);
+const sidebarPaneSizes = ref([80, 20]);
 const onSidebarPaneButtonClick = (paneNumber) => {
   sidebarPaneSizes.value.forEach((size, index) => {
     if (index === paneNumber) {
-      sidebarPaneSizes.value[index] = 95;
+      sidebarPaneSizes.value[index] = 98;
     } else {
       sidebarPaneSizes.value[index] = 2.5;
     }
@@ -57,10 +58,10 @@ const logPaneSize = ref(20);
                 @click="onSidebarPaneButtonClick(1)"
                 class="splitpane-sidebar-buttons"
               >
-                Saved Queries
+                Tables
               </button>
             </pane>
-            <pane
+            <!-- <pane
               class="sidebar-pane"
               :size="sidebarPaneSizes[2]"
               min-size="2.5"
@@ -71,7 +72,7 @@ const logPaneSize = ref(20);
               >
                 Tables
               </button>
-            </pane>
+            </pane> -->
           </splitpanes>
         </pane>
 
