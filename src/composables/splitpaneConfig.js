@@ -19,16 +19,9 @@ const toggleLogPane = () => {
   data.isLogPaneOpen = !data.isLogPaneOpen;
 };
 
-const isSidebarOpen = computed(() => data.isSidebarOpen);
-const editorDirection = computed(() => data.editorDirection);
-const isLogPaneOpen = computed(() => data.isLogPaneOpen);
-
 export default () => ({
   ...toRefs(data),
   toggleSidebar,
-  isSidebarOpen,
   toggleEditorDirection,
-  editorDirection,
   toggleLogPane,
-  isLogPaneOpen,
 });
