@@ -44,6 +44,14 @@
   background-color: #942b16;
 }
 
+.btn-secondary[disabled] {
+  cursor: default;
+}
+
+.btn-secondary[disabled]:hover {
+  background-color: transparent;
+}
+
 .spacer {
   width: 100%;
 }

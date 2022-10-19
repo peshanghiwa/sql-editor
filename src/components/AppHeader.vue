@@ -104,14 +104,6 @@ header {
   margin-inline: 5px;
 }
 
-.action-button[disabled] {
-  cursor: default;
-}
-
-.action-button[disabled]:hover {
-  background-color: #2d4263;
-}
-
 .login-button {
   margin-inline-start: 5px;
 }
