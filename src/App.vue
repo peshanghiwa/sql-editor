@@ -48,6 +48,7 @@ const logPaneSize = ref(20);
               >
                 Tabs
               </button>
+              <EditorTabs />
             </pane>
             <pane
               class="sidebar-pane"
