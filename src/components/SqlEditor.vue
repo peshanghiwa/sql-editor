@@ -1,6 +1,7 @@
 <script setup>
+import { ref } from "vue";
 import useSqlEditorConfig from "../composables/sqlEditorConfig";
-const { editorInput } = useSqlEditorConfig();
+const { editorInput, editorFontSize } = useSqlEditorConfig();
 </script>
 
 <template>
@@ -25,7 +26,7 @@ const { editorInput } = useSqlEditorConfig();
   border: none;
   outline: none;
   resize: none;
-  font-size: 1.2rem;
+  font-size: v-bind("editorFontSize");
   font-family: "Roboto Mono", monospace;
   background-color: #191919;
   color: #fff;

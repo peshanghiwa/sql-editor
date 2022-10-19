@@ -4,7 +4,8 @@ import useSqlEditorConfig from "../composables/sqlEditorConfig";
 const { toggleSidebar, toggleEditorDirection, editorDirection, toggleLogPane } =
   useSplitpaneConfig();
 
-const { beautifyEditorInput } = useSqlEditorConfig();
+const { beautifyEditorInput, changeEditorFontSize, disabledTypeButtons } =
+  useSqlEditorConfig();
 </script>
 
 <template>
@@ -42,7 +43,23 @@ const { beautifyEditorInput } = useSqlEditorConfig();
     </button>
 
     <div class="spacer"></div>
-
+    <div class="font-size-container">
+      <button
+        @click="changeEditorFontSize('increase')"
+        class="btn btn-secondary action-button"
+        :disabled="disabledTypeButtons.increase"
+      >
+        +
+      </button>
+      <img src="./../assets/font-size.svg" height="20" width="20" alt="" />
+      <button
+        @click="changeEditorFontSize('decrease')"
+        class="btn btn-secondary action-button"
+        :disabled="disabledTypeButtons.decrease"
+      >
+        -
+      </button>
+    </div>
     <button
       @click="toggleEditorDirection"
       class="btn btn-secondary action-button"
@@ -62,7 +79,8 @@ const { beautifyEditorInput } = useSqlEditorConfig();
         alt=""
       />
     </button>
-    <button class="btn btn-primary">Login</button>
+
+    <button class="btn btn-primary login-button">Login</button>
   </header>
 </template>
 
@@ -84,5 +102,28 @@ header {
 
 .action-button {
   margin-inline: 5px;
+}
+
+.action-button[disabled] {
+  cursor: default;
+}
+
+.action-button[disabled]:hover {
+  background-color: #2d4263;
+}
+
+.login-button {
+  margin-inline-start: 5px;
+}
+
+.font-size-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.font-size-container button {
+  font-size: 14px;
 }
 </style>
