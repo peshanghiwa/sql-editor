@@ -31,7 +31,9 @@ const logPaneSize = ref(20);
   <main>
     <AppHeader />
     <section>
+      <!-- Main page Split panes -->
       <splitpanes vertical>
+        <!-- Sidebar Pane -->
         <pane v-if="isSidebarOpen" size="20" min-size="15" max-size="40">
           <splitpanes @resized="onSidebarPaneResized" horizontal="horizontal">
             <pane
@@ -72,6 +74,8 @@ const logPaneSize = ref(20);
             </pane>
           </splitpanes>
         </pane>
+
+        <!-- Page Content Pane -->
         <pane>
           <splitpanes
             horizontal
@@ -81,6 +85,7 @@ const logPaneSize = ref(20);
               }
             "
           >
+            <!-- SQL Editor and SQL Result Pane  -->
             <pane min-size="15">
               <splitpanes :horizontal="editorDirection === 'horizontal'">
                 <pane min-size="15">
@@ -91,6 +96,8 @@ const logPaneSize = ref(20);
                 </pane>
               </splitpanes>
             </pane>
+
+            <!-- Error Logger Pane  -->
             <pane
               :size="logPaneSize"
               v-if="isLogPaneOpen"

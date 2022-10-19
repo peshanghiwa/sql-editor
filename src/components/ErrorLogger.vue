@@ -8,9 +8,10 @@
 
 <style scoped>
 .error-log-container {
-  padding: 5px;
+  padding: 10px;
   height: 100%;
   overflow-y: auto;
   color: rgb(186, 186, 186);
+  font-size: 14px;
 }
 </style>
