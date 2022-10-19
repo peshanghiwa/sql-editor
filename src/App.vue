@@ -12,7 +12,7 @@ const sidebarPaneSizes = ref([94, 1.5, 1.5]);
 const onSidebarPaneButtonClick = (paneNumber) => {
   sidebarPaneSizes.value.forEach((size, index) => {
     if (index === paneNumber) {
-      sidebarPaneSizes.value[index] = 94;
+      sidebarPaneSizes.value[index] = 95;
     } else {
       sidebarPaneSizes.value[index] = 2.5;
     }

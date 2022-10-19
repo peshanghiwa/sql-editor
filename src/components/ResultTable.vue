@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
-import users from "../assets/users.json";
+// import users from "../assets/users.json";
+const users = [];
 
 const openedFullColumn = ref(null);
 const showFullColumn = (columnName) => {
@@ -94,6 +95,9 @@ const showFullColumn = (columnName) => {
         </td>
       </tr>
     </table>
+    <div class="empty-table" v-else>
+      SQL Expression result will be shown here
+    </div>
   </div>
 </template>
 
@@ -156,5 +160,14 @@ tr td:nth-child(1) {
   max-width: unset;
   width: unset;
   white-space: pre-wrap;
+}
+
+.empty-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 22px;
+  color: #5b5b5b;
 }
 </style>
