@@ -13,13 +13,19 @@ import {
   BIconList,
 } from "bootstrap-icons-vue";
 import useSplitpaneConfig from "../../composables/splitpaneConfig";
-import useSqlEditorConfig from "../../composables/sqlEditorConfig";
+import useEditorsConfig from "../../composables/editorsConfig";
 import useThemeConfig from "../../composables/themeConfig";
 const { toggleSidebar, toggleEditorDirection, editorDirection, toggleLogPane } =
   useSplitpaneConfig();
 
-const { beautifyEditorInput, changeEditorFontSize, disabledTypeButtons } =
-  useSqlEditorConfig();
+const {
+  beautifyEditorInput,
+  changeEditorFontSize,
+  disabledTypeButtons,
+  saveTab,
+  selectedTab,
+  editorInput,
+} = useEditorsConfig();
 
 const { theme, setTheme } = useThemeConfig();
 </script>
@@ -40,15 +46,23 @@ const { theme, setTheme } = useThemeConfig();
       <span class="button-text"> Kill </span>
     </button>
 
-    <button class="btn btn-secondary action-button">
-      <BIconSave2Fill class="icon icon-md" />
+    <button
+      class="btn btn-secondary action-button"
+      @click="saveTab"
+      :disabled="selectedTab.saved"
+    >
+      <BIconSave2Fill
+        class="icon icon-md"
+        :class="{ disabled: selectedTab.saved }"
+      />
       <span class="button-text"> Save </span>
     </button>
     <button
       @click="beautifyEditorInput"
       class="btn btn-secondary action-button"
+      :disabled="!editorInput"
     >
-      <BIconStars class="icon icon-md" />
+      <BIconStars class="icon icon-md" :class="{ disabled: !editorInput }" />
       <span class="button-text"> Beautify </span>
     </button>
 

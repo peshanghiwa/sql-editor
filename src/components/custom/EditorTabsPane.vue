@@ -1,95 +1,19 @@
 <script setup>
 import { nextTick, ref } from "vue";
 import { vOnClickOutside } from "@vueuse/components";
-import { BIconTrashFill } from "bootstrap-icons-vue";
+import { BIconTrashFill, BIconCircleFill } from "bootstrap-icons-vue";
+import useEditorsConfig from "../../composables/editorsConfig";
 
-const tabs = ref([
-  {
-    id: 1,
-    name: "Users_Queries",
-    open: true,
-    editable: false,
-  },
-  {
-    id: 2,
-    name: "Posts_Queries",
-    open: false,
-    editable: false,
-  },
-  {
-    id: 3,
-    name: "Comments_Queries",
-    open: false,
-    editable: false,
-  },
-]);
-
-const onTabClick = (selectedTabId) => {
-  // if there is an open rename tab with no name, don't allow the user to open another tab
-  if (tabs.value.some((tab) => tab.name === "" && tab.editable)) return;
-  tabs.value.forEach((tab) => {
-    if (selectedTabId === tab.id) tab.open = true;
-    else tab.open = false;
-  });
-};
-
-const onTabDoubleClick = async (selectedTabId) => {
-  // if there is an open rename tab with no name, don't allow the user to rename another tab
-  if (tabs.value.some((tab) => tab.name === "" && tab.editable)) return;
-
-  tabs.value.forEach((tab) => {
-    if (selectedTabId === tab.id) tab.editable = true;
-    else tab.editable = false;
-  });
-  await nextTick();
-  document.getElementById(`tab_${selectedTabId}`).focus();
-};
-
-const onRenameComplete = (selectedTabId) => {
-  // if the current editing tab name is empty, don't allow the user to dave it
-  const selectedTab = tabs.value.find((tab) => tab.id === selectedTabId);
-  if (selectedTab.name === "") return;
-
-  if (selectedTab.editable) {
-    selectedTab.editable = false;
-  }
-};
-
-const selectedTab = ref(null);
-const deleteTabModalStatus = ref(false);
-const openDeleteTabModal = (selectedTabId) => {
-  selectedTab.value = tabs.value.find((tab) => tab.id === selectedTabId);
-  deleteTabModalStatus.value = true;
-};
-const deleteTab = () => {
-  if (selectedTab.value.open) {
-    const nextTab = tabs.value.find((tab) => tab.id > selectedTab.value.id);
-    if (nextTab) {
-      nextTab.open = true;
-    } else {
-      const prevTab = tabs.value.find((tab) => tab.id < selectedTab.value.id);
-      if (prevTab) {
-        prevTab.open = true;
-      }
-    }
-  }
-  tabs.value = tabs.value.filter((tab) => tab.id !== selectedTab.value.id);
-  deleteTabModalStatus.value = false;
-};
-
-const addNewTab = () => {
-  const newTab = {
-    id: tabs.value.length + 1,
-    name: "New_Tab",
-    open: true,
-    editable: true,
-  };
-  tabs.value.forEach((tab) => {
-    tab.open = false;
-  });
-  tabs.value.push(newTab);
-  onTabDoubleClick(newTab.id);
-};
+const {
+  tabs,
+  deleteTabModalStatus,
+  onTabClick,
+  onTabDoubleClick,
+  onRenameComplete,
+  openDeleteTabModal,
+  deleteTab,
+  addNewTab,
+} = useEditorsConfig();
 </script>
 <template>
   <section class="tabs-section-container">
@@ -102,7 +26,9 @@ const addNewTab = () => {
       :class="{
         active: tab.open,
         editable: tab.editable,
-        invalid: tab.name === '' && tab.editable,
+        invalid:
+          (tab.name === '' && tab.editable) ||
+          tabs.find((t) => t.name === tab.name && t.id !== tab.id),
       }"
     >
       <input
@@ -116,13 +42,16 @@ const addNewTab = () => {
         placeholder="Tab must have a name"
         autocomplete="off"
       />
-      <button
-        v-if="!tab.editable"
-        @click="openDeleteTabModal(tab.id)"
-        class="btn btn-secondary delete-button"
-      >
-        <BIconTrashFill class="icon icon-md" />
-      </button>
+      <span class="tab-actions">
+        <BIconCircleFill v-if="!tab.saved" class="icon icon-sm" />
+        <button
+          v-if="!tab.editable"
+          @click="openDeleteTabModal(tab.id)"
+          class="btn btn-secondary delete-button"
+        >
+          <BIconTrashFill class="icon icon-md" />
+        </button>
+      </span>
     </div>
 
     <button class="btn btn-primary new-tab-button" @click="addNewTab">
@@ -204,6 +133,13 @@ const addNewTab = () => {
 .tab-container.invalid {
   background-color: rgb(255, 113, 113);
   color: #fff;
+}
+
+.tab-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 /* change placeholder color for invalid tab container */

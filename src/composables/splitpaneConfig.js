@@ -1,4 +1,4 @@
-import { reactive, toRefs, computed } from "vue";
+import { reactive, toRefs } from "vue";
 
 const data = reactive({
   isSidebarOpen: true,
