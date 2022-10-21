@@ -1,11 +1,11 @@
 <script setup>
 import { ref } from "vue";
-import SqlEditor from "../custom/SqlEditor.vue";
+import SqlEditorPane from "../custom/SqlEditorPane.vue";
 import useSplitpaneConfig from "../../composables/splitpaneConfig";
-import ErrorLogger from "../custom/ErrorLogger.vue";
-import ResultTable from "../custom/ResultTable.vue";
-import EditorTabs from "../custom/EditorTabs.vue";
-import SqlTables from "../custom/SqlTables.vue";
+import ErrorLoggerPane from "../custom/ErrorLoggerPane.vue";
+import ResultTablePane from "../custom/ResultTablePane.vue";
+import EditorTabsPane from "../custom/EditorTabsPane.vue";
+import SqlTablesPane from "../custom/SqlTablesPane.vue";
 
 const { isSidebarOpen, editorDirection, isLogPaneOpen } = useSplitpaneConfig();
 
@@ -42,7 +42,7 @@ const logPaneSize = ref(20);
             >
               Tabs
             </button>
-            <EditorTabs />
+            <EditorTabsPane />
           </pane>
           <pane class="sidebar-pane" :size="sidebarPaneSizes[1]" min-size="2.5">
             <button
@@ -51,7 +51,7 @@ const logPaneSize = ref(20);
             >
               Tables
             </button>
-            <SqlTables />
+            <SqlTablesPane />
           </pane>
         </splitpanes>
       </pane>
@@ -70,17 +70,17 @@ const logPaneSize = ref(20);
           <pane min-size="15">
             <splitpanes :horizontal="editorDirection === 'horizontal'">
               <pane min-size="15">
-                <SqlEditor />
+                <SqlEditorPane />
               </pane>
               <pane min-size="15">
-                <ResultTable />
+                <ResultTablePane />
               </pane>
             </splitpanes>
           </pane>
 
           <!-- Error Logger Pane  -->
           <pane :size="logPaneSize" v-if="isLogPaneOpen" class="error-log-pane">
-            <ErrorLogger />
+            <ErrorLoggerPane />
           </pane>
         </splitpanes>
       </pane>
