@@ -10,7 +10,7 @@
 <style scoped>
 .footer-container {
   width: 100%;
-  background-color: #2d4263;
+  background-color: var(--primary-color);
   padding-inline: 20px;
   height: 20px;
   display: flex;

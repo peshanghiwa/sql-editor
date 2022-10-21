@@ -2,7 +2,9 @@
 
 <template>
   <div class="error-log-container">
-    Error in the line 13, missing semi colon please check and fucking fix it
+    You have an error in your SQL syntax; check the manual that corresponds to
+    your MySQL server version for the right syntax to use near 'SELECT count(*)
+    FROM MyTable' at line 1
   </div>
 </template>
 
@@ -11,7 +13,8 @@
   padding: 10px;
   height: 100%;
   overflow-y: auto;
-  color: rgb(186, 186, 186);
+  color: var(--text-color);
+  background-color: var(--grey-color);
   font-size: 14px;
 }
 </style>

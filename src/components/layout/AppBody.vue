@@ -51,21 +51,8 @@ const logPaneSize = ref(20);
             >
               Tables
             </button>
-
             <SqlTables />
           </pane>
-          <!-- <pane
-              class="sidebar-pane"
-              :size="sidebarPaneSizes[2]"
-              min-size="2.5"
-            >
-              <button
-                @click="onSidebarPaneButtonClick(2)"
-                class="splitpane-sidebar-buttons"
-              >
-                Tables
-              </button>
-            </pane> -->
         </splitpanes>
       </pane>
 
@@ -103,14 +90,14 @@ const logPaneSize = ref(20);
 
 <style scoped>
 section {
-  height: calc(100% - 70px);
+  height: calc(100% - 80px); /* 90px is height of footer and header */
   width: 100%;
 }
 
 .splitpane-sidebar-buttons {
   width: 100%;
-  border: 2px solid #c84b31;
-  background-color: #c84b31;
+  border: 2px solid var(--primary-color);
+  background-color: var(--primary-color);
   cursor: pointer;
 }
 

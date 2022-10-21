@@ -28,8 +28,8 @@ const { editorInput, editorFontSize } = useSqlEditorConfig();
   resize: none;
   font-size: v-bind("editorFontSize");
   font-family: "Roboto Mono", monospace;
-  background-color: #191919;
-  color: #fff;
+  background-color: var(--background-color);
+  color: var(--text-color);
   padding: 3px 5px;
 }
 </style>
