@@ -1,45 +1,65 @@
 <script setup>
+import {
+  BIconStopFill,
+  BIconPlayFill,
+  BIconSave2Fill,
+  BIconStars,
+  BIconFileEarmarkMedicalFill,
+  BIconFonts,
+  BIconFileEarmarkFill,
+  BIconLayoutSplit,
+  BIconSunFill,
+  BIconMoonFill,
+  BIconList,
+} from "bootstrap-icons-vue";
 import useSplitpaneConfig from "../../composables/splitpaneConfig";
 import useSqlEditorConfig from "../../composables/sqlEditorConfig";
+import useThemeConfig from "../../composables/themeConfig";
 const { toggleSidebar, toggleEditorDirection, editorDirection, toggleLogPane } =
   useSplitpaneConfig();
 
 const { beautifyEditorInput, changeEditorFontSize, disabledTypeButtons } =
   useSqlEditorConfig();
+
+const { theme, setTheme } = useThemeConfig();
 </script>
 
 <template>
   <header>
     <button @click="toggleSidebar" class="btn btn-primary burger-button">
-      <img src="./../../assets/menu.svg" height="20" width="20" alt="" />
+      <BIconList class="icon icon-lg" />
     </button>
 
     <button class="btn btn-secondary action-button">
-      <img src="./../../assets/run.svg" height="12" width="12" alt="" />
+      <BIconPlayFill class="icon icon-lg" />
       <span class="button-text"> Run </span>
     </button>
 
-    <button class="btn btn-secondary action-button">
-      <img src="./../../assets/stop.svg" height="12" width="12" alt="" />
+    <button class="btn btn-secondary action-button" disabled>
+      <BIconStopFill class="icon icon-lg disabled" />
       <span class="button-text"> Kill </span>
     </button>
 
     <button class="btn btn-secondary action-button">
-      <img src="./../../assets/save.svg" height="14" width="14" alt="" />
+      <BIconSave2Fill class="icon icon-md" />
       <span class="button-text"> Save </span>
     </button>
-    csv
     <button
       @click="beautifyEditorInput"
       class="btn btn-secondary action-button"
     >
-      <img src="./../../assets/format.svg" height="14" width="14" alt="" />
+      <BIconStars class="icon icon-md" />
       <span class="button-text"> Beautify </span>
     </button>
 
     <button @click="toggleLogPane" class="btn btn-secondary action-button">
-      <img src="./../../assets/logs.svg" height="15" width="15" alt="" />
+      <BIconFileEarmarkMedicalFill class="icon icon-md" />
       <span class="button-text"> Logs </span>
+    </button>
+
+    <button class="btn btn-secondary action-button">
+      <BIconFileEarmarkFill class="icon icon-md" />
+      <span class="button-text"> CSV </span>
     </button>
 
     <div class="spacer"></div>
@@ -51,7 +71,7 @@ const { beautifyEditorInput, changeEditorFontSize, disabledTypeButtons } =
       >
         +
       </button>
-      <img src="./../../assets/font-size.svg" height="20" width="20" alt="" />
+      <BIconFonts class="icon icon-lg" />
       <button
         @click="changeEditorFontSize('decrease')"
         class="btn btn-secondary action-button"
@@ -61,22 +81,21 @@ const { beautifyEditorInput, changeEditorFontSize, disabledTypeButtons } =
       </button>
     </div>
     <button
+      @click="setTheme(theme === 'light' ? 'dark' : 'light')"
+      class="btn btn-secondary action-button"
+    >
+      <component
+        class="icon icon-md"
+        :is="theme === 'dark' ? BIconSunFill : BIconMoonFill"
+      />
+    </button>
+    <button
       @click="toggleEditorDirection"
       class="btn btn-secondary action-button"
     >
-      <img
-        v-if="editorDirection !== 'horizontal'"
-        src="./../../assets/horizontal.svg"
-        height="20"
-        width="20"
-        alt=""
-      />
-      <img
-        v-else
-        src="./../../assets/vertical.svg"
-        height="20"
-        width="20"
-        alt=""
+      <BIconLayoutSplit
+        class="icon icon-md"
+        :class="{ 'rotate-icon': editorDirection !== 'horizontal' }"
       />
     </button>
 

@@ -1,6 +1,7 @@
 <script setup>
 import { nextTick, ref } from "vue";
 import { vOnClickOutside } from "@vueuse/components";
+import { BIconTrashFill } from "bootstrap-icons-vue";
 
 const tabs = ref([
   {
@@ -120,7 +121,7 @@ const addNewTab = () => {
         @click="openDeleteTabModal(tab.id)"
         class="btn btn-secondary delete-button"
       >
-        <img src="../../assets/delete.svg" width="15" alt="" />
+        <BIconTrashFill class="icon icon-md" />
       </button>
     </div>
 

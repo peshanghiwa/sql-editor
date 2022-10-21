@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@vueuse/components": "^9.3.1",
+    "bootstrap-icons-vue": "^1.8.1",
     "splitpanes": "^3.1.1",
     "sql-formatter": "^11.0.2",
     "vue": "^3.2.37",
