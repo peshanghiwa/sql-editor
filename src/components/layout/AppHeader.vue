@@ -28,7 +28,7 @@ const { beautifyEditorInput, changeEditorFontSize, disabledTypeButtons } =
       <img src="./../../assets/save.svg" height="14" width="14" alt="" />
       <span class="button-text"> Save </span>
     </button>
-    convert to csv
+    csv
     <button
       @click="beautifyEditorInput"
       class="btn btn-secondary action-button"
@@ -86,9 +86,10 @@ const { beautifyEditorInput, changeEditorFontSize, disabledTypeButtons } =
 
 <style scoped>
 header {
-  height: 50px;
+  height: 60px;
   width: 100%;
-  background-color: #2d4263;
+  background-color: var(--background-color);
+  border-bottom: 1px solid rgb(69, 69, 69);
   display: flex;
   align-items: center;
   padding-inline: 15px;

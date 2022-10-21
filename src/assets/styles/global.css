@@ -1,15 +1,25 @@
 /* Global Styles */
+:root {
+  --primary-color: #41b883;
+  --primary-color-hover: #238f5e;
+  --primary-color-active: #18734a;
+  --background-color: #1a1a1a;
+  --background-color-2: #202020;
+  --background-color-3: #303030;
+  --text-color: #fff;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: white;
+  color: var(--text-color);
   font-family: sans-serif;
 }
 
 .btn {
   border: none;
-  color: white;
+  color: var(--text-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,15 +31,15 @@
 }
 
 .btn-primary {
-  background-color: #c84b31;
+  background-color: var(--primary-color);
 }
 
 .btn-primary:hover {
-  background-color: #b43d25;
+  background-color: var(--primary-color-hover);
 }
 
 .btn-primary:active {
-  background-color: #942b16;
+  background-color: var(--primary-color-active);
 }
 
 .btn-secondary {
@@ -37,11 +47,11 @@
 }
 
 .btn-secondary:hover {
-  background-color: #c84b31;
+  background-color: var(--primary-color);
 }
 
 .btn-secondary:active {
-  background-color: #942b16;
+  background-color: var(--primary-color-active);
 }
 
 .btn-secondary[disabled] {
@@ -58,11 +68,11 @@
 
 /* Splitpane package styles */
 .splitpanes {
-  background-color: #191919;
+  background-color: var(--background-color);
 }
 
 .splitpanes__splitter {
-  background-color: #ecdbba;
+  background-color: var(--background-color-3);
   position: relative;
 }
 .splitpanes__splitter:before {
@@ -71,7 +81,7 @@
   left: 0;
   top: 0;
   transition: opacity 0.4s;
-  background-color: #c84b31;
+  background-color: var(--primary-color);
   opacity: 0;
   z-index: 1;
 }
@@ -79,12 +89,12 @@
   opacity: 1;
 }
 .splitpanes--vertical > .splitpanes__splitter:before {
-  left: -3px;
-  right: -3px;
+  left: -2px;
+  right: -2px;
   height: 100%;
 }
 .splitpanes--horizontal > .splitpanes__splitter:before {
-  top: -3px;
-  bottom: -3px;
+  top: -2px;
+  bottom: -2px;
   width: 100%;
 }

@@ -7,7 +7,7 @@ import Treeview from "vue3-treeview";
 
 // Styles
 import "splitpanes/dist/splitpanes.css";
-import "./style.css";
+import "./assets/styles/global.css";
 import "vue3-treeview/dist/style.css";
 
 const app = createApp(App);

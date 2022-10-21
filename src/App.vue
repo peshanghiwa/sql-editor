@@ -2,6 +2,8 @@
 import AppHeader from "./components/layout/AppHeader.vue";
 import AppFooter from "./components/layout/AppFooter.vue";
 import AppBody from "./components/layout/AppBody.vue";
+import useThemeConfig from "./composables/themeConfig";
+useThemeConfig();
 </script>
 
 <template>

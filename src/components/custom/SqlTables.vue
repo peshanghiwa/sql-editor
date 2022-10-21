@@ -207,6 +207,7 @@ const nodes = ref({
   width: 100%;
   overflow-y: auto;
   padding-bottom: 50px;
+  background-color: var(--background-color);
 }
 ::v-deep(.icon-wrapper svg path) {
   fill: white !important;
@@ -217,10 +218,10 @@ const nodes = ref({
   transition: all ease 0.2s;
 }
 ::v-deep(.node-wrapper:hover) {
-  background-color: #434343;
+  background-color: var(--background-color-2);
 }
 ::v-deep(.node-wrapper:focus) {
-  background-color: #434343;
+  background-color: var(--background-color-3);
 }
 ::v-deep(.node-wrapper.editable input) {
   color: black;

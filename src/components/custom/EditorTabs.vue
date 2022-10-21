@@ -151,6 +151,7 @@ const addNewTab = () => {
   height: 100%;
   overflow-y: auto;
   padding-bottom: 50px;
+  background-color: var(--background-color);
 }
 
 .tab-container {
@@ -164,7 +165,7 @@ const addNewTab = () => {
 }
 
 .tab-container:hover {
-  background-color: #2f2f2f;
+  background-color: var(--background-color-2);
 }
 
 .tab {
@@ -184,9 +185,9 @@ const addNewTab = () => {
 }
 
 .tab-container.active {
-  background-color: #444444;
+  background-color: var(--background-color-3);
   color: #fff;
-  border-inline-start: 5px solid #fff;
+  border-inline-start: 5px solid var(--primary-color-active);
 }
 
 .tab-container.editable {
