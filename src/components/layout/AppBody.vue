@@ -1,11 +1,11 @@
 <script setup>
 import { ref } from "vue";
-import SqlEditor from "../SqlEditor.vue";
+import SqlEditor from "../custom/SqlEditor.vue";
 import useSplitpaneConfig from "../../composables/splitpaneConfig";
-import ErrorLogger from "../ErrorLogger.vue";
-import ResultTable from "../ResultTable.vue";
-import EditorTabs from "../EditorTabs.vue";
-import SqlTables from "../SqlTables.vue";
+import ErrorLogger from "../custom/ErrorLogger.vue";
+import ResultTable from "../custom/ResultTable.vue";
+import EditorTabs from "../custom/EditorTabs.vue";
+import SqlTables from "../custom/SqlTables.vue";
 
 const { isSidebarOpen, editorDirection, isLogPaneOpen } = useSplitpaneConfig();
 

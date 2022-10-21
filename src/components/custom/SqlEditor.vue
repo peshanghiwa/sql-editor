@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import useSqlEditorConfig from "../composables/sqlEditorConfig";
+import useSqlEditorConfig from "../../composables/sqlEditorConfig";
 const { editorInput, editorFontSize } = useSqlEditorConfig();
 </script>
 

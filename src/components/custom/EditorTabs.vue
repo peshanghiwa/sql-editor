@@ -120,7 +120,7 @@ const addNewTab = () => {
         @click="openDeleteTabModal(tab.id)"
         class="btn btn-secondary delete-button"
       >
-        <img src="../assets/delete.svg" width="15" alt="" />
+        <img src="../../assets/delete.svg" width="15" alt="" />
       </button>
     </div>
 
