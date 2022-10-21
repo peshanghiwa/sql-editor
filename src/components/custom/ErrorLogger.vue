@@ -14,7 +14,7 @@
   height: 100%;
   overflow-y: auto;
   color: var(--text-color);
-  background-color: var(--grey-color);
+  background-color: var(--background-color-2);
   font-size: 14px;
 }
 </style>

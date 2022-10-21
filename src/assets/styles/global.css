@@ -8,7 +8,6 @@
   --background-color-3: #303030;
   --text-color: #fff;
   --text-color-disabled: #6e6e6e;
-  --grey-color: #232323;
 }
 
 * {
@@ -68,60 +67,4 @@
 
 .spacer {
   width: 100%;
-}
-
-/* Splitpane package styles */
-.splitpanes {
-  background-color: var(--background-color);
-}
-
-.splitpanes__splitter {
-  background-color: var(--background-color-3);
-  position: relative;
-}
-.splitpanes__splitter:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  transition: opacity 0.4s;
-  background-color: var(--primary-color);
-  opacity: 0;
-  z-index: 1;
-}
-.splitpanes__splitter:hover:before {
-  opacity: 1;
-}
-.splitpanes--vertical > .splitpanes__splitter:before {
-  left: -2px;
-  right: -2px;
-  height: 100%;
-}
-.splitpanes--horizontal > .splitpanes__splitter:before {
-  top: -2px;
-  bottom: -2px;
-  width: 100%;
-}
-
-.icon path {
-  fill: var(--text-color);
-}
-.icon.disabled path {
-  fill: var(--text-color-disabled);
-}
-
-.icon-lg {
-  height: 20px;
-  width: 20px;
-}
-.icon-md {
-  height: 15px;
-  width: 15px;
-}
-.icon-sm {
-  height: 10px;
-  width: 10px;
-}
-.rotate-icon {
-  transform: rotate(90deg);
 }

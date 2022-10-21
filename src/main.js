@@ -6,8 +6,10 @@ import { VueFinalModal } from "vue-final-modal";
 import Treeview from "vue3-treeview";
 
 // Styles
-import "splitpanes/dist/splitpanes.css";
 import "./assets/styles/global.css";
+import "./assets/styles/split-pane.css";
+import "./assets/styles/bootstrap-icons.css";
+import "splitpanes/dist/splitpanes.css";
 import "vue3-treeview/dist/style.css";
 
 const app = createApp(App);

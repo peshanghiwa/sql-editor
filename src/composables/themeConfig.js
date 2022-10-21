@@ -20,13 +20,11 @@ const setCssVariables = (theme) => {
     root.style.setProperty("--background-color-2", "#202020");
     root.style.setProperty("--background-color-3", "#303030");
     root.style.setProperty("--text-color", "#ffffff");
-    root.style.setProperty("--grey-color", "#232323");
   } else {
     root.style.setProperty("--background-color", "#ffffff");
     root.style.setProperty("--background-color-2", "#f0f0f0");
     root.style.setProperty("--background-color-3", "#dddddd");
     root.style.setProperty("--text-color", "#000000");
-    root.style.setProperty("--grey-color", "#f1f1f1");
   }
 };
 
