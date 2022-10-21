@@ -9,7 +9,7 @@ import EditorTabs from "./components/EditorTabs.vue";
 
 const { isSidebarOpen, editorDirection, isLogPaneOpen } = useSplitpaneConfig();
 
-const sidebarPaneSizes = ref([80, 20]);
+const sidebarPaneSizes = ref([60, 40]);
 const onSidebarPaneButtonClick = (paneNumber) => {
   sidebarPaneSizes.value.forEach((size, index) => {
     if (index === paneNumber) {

@@ -149,6 +149,8 @@ const addNewTab = () => {
 .tabs-section-container {
   width: 100%;
   height: 100%;
+  overflow-y: auto;
+  padding-bottom: 50px;
 }
 
 .tab-container {
