@@ -13,7 +13,8 @@
     "splitpanes": "^3.1.1",
     "sql-formatter": "^11.0.2",
     "vue": "^3.2.37",
-    "vue-final-modal": "^3.4.4"
+    "vue-final-modal": "^3.4.4",
+    "vue3-treeview": "^0.4.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.1.0",
