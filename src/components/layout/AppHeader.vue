@@ -1,6 +1,6 @@
 <script setup>
-import useSplitpaneConfig from "../composables/splitpaneConfig";
-import useSqlEditorConfig from "../composables/sqlEditorConfig";
+import useSplitpaneConfig from "../../composables/splitpaneConfig";
+import useSqlEditorConfig from "../../composables/sqlEditorConfig";
 const { toggleSidebar, toggleEditorDirection, editorDirection, toggleLogPane } =
   useSplitpaneConfig();
 
@@ -11,21 +11,21 @@ const { beautifyEditorInput, changeEditorFontSize, disabledTypeButtons } =
 <template>
   <header>
     <button @click="toggleSidebar" class="btn btn-primary burger-button">
-      <img src="./../assets/menu.svg" height="20" width="20" alt="" />
+      <img src="./../../assets/menu.svg" height="20" width="20" alt="" />
     </button>
 
     <button class="btn btn-secondary action-button">
-      <img src="./../assets/run.svg" height="12" width="12" alt="" />
+      <img src="./../../assets/run.svg" height="12" width="12" alt="" />
       <span class="button-text"> Run </span>
     </button>
 
     <button class="btn btn-secondary action-button">
-      <img src="./../assets/stop.svg" height="12" width="12" alt="" />
+      <img src="./../../assets/stop.svg" height="12" width="12" alt="" />
       <span class="button-text"> Kill </span>
     </button>
 
     <button class="btn btn-secondary action-button">
-      <img src="./../assets/save.svg" height="14" width="14" alt="" />
+      <img src="./../../assets/save.svg" height="14" width="14" alt="" />
       <span class="button-text"> Save </span>
     </button>
     convert to csv
@@ -33,12 +33,12 @@ const { beautifyEditorInput, changeEditorFontSize, disabledTypeButtons } =
       @click="beautifyEditorInput"
       class="btn btn-secondary action-button"
     >
-      <img src="./../assets/format.svg" height="14" width="14" alt="" />
+      <img src="./../../assets/format.svg" height="14" width="14" alt="" />
       <span class="button-text"> Beautify </span>
     </button>
 
     <button @click="toggleLogPane" class="btn btn-secondary action-button">
-      <img src="./../assets/logs.svg" height="15" width="15" alt="" />
+      <img src="./../../assets/logs.svg" height="15" width="15" alt="" />
       <span class="button-text"> Logs </span>
     </button>
 
@@ -51,7 +51,7 @@ const { beautifyEditorInput, changeEditorFontSize, disabledTypeButtons } =
       >
         +
       </button>
-      <img src="./../assets/font-size.svg" height="20" width="20" alt="" />
+      <img src="./../../assets/font-size.svg" height="20" width="20" alt="" />
       <button
         @click="changeEditorFontSize('decrease')"
         class="btn btn-secondary action-button"
@@ -66,14 +66,14 @@ const { beautifyEditorInput, changeEditorFontSize, disabledTypeButtons } =
     >
       <img
         v-if="editorDirection !== 'horizontal'"
-        src="./../assets/horizontal.svg"
+        src="./../../assets/horizontal.svg"
         height="20"
         width="20"
         alt=""
       />
       <img
         v-else
-        src="./../assets/vertical.svg"
+        src="./../../assets/vertical.svg"
         height="20"
         width="20"
         alt=""
