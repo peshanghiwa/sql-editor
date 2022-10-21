@@ -177,12 +177,16 @@ const addNewTab = () => {
     name: "New_Tab",
     open: true,
     editable: true,
+    sqlTextarea: "",
+    saved: true,
   };
   data.tabs.forEach((tab) => {
     tab.open = false;
   });
   data.tabs.push(newTab);
   onTabDoubleClick(newTab.id);
+
+  data.selectedTab = newTab;
 };
 
 const saveTab = () => {

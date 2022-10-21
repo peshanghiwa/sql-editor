@@ -20,3 +20,6 @@
 .rotate-icon {
   transform: rotate(90deg);
 }
+.icon-wrapper svg path {
+  fill: var(--text-color);
+}

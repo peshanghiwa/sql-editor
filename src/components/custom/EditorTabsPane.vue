@@ -54,7 +54,11 @@ const {
       </span>
     </div>
 
-    <button class="btn btn-primary new-tab-button" @click="addNewTab">
+    <button
+      class="btn btn-primary new-tab-button"
+      @click="addNewTab"
+      v-if="!tabs.some((tab) => tab.editable)"
+    >
       New Tab +
     </button>
 

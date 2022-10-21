@@ -122,7 +122,7 @@ header {
   height: 60px;
   width: 100%;
   background-color: var(--background-color);
-  border-bottom: 1px solid rgb(69, 69, 69);
+  border-bottom: 1px solid var(--background-color-3);
   display: flex;
   align-items: center;
   padding-inline: 15px;

@@ -209,9 +209,6 @@ const nodes = ref({
   padding-bottom: 50px;
   background-color: var(--background-color);
 }
-::v-deep(.icon-wrapper svg path) {
-  fill: white !important;
-}
 
 ::v-deep(.node-wrapper),
 ::v-deep(.node-wrapper *) {
