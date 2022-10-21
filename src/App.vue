@@ -6,6 +6,7 @@ import useSplitpaneConfig from "./composables/splitpaneConfig";
 import ErrorLogger from "./components/ErrorLogger.vue";
 import ResultTable from "./components/ResultTable.vue";
 import EditorTabs from "./components/EditorTabs.vue";
+import SqlTables from "./components/SqlTables.vue";
 
 const { isSidebarOpen, editorDirection, isLogPaneOpen } = useSplitpaneConfig();
 
@@ -61,6 +62,8 @@ const logPaneSize = ref(20);
               >
                 Tables
               </button>
+
+              <SqlTables />
             </pane>
             <!-- <pane
               class="sidebar-pane"
