@@ -60,24 +60,14 @@ The page load is measured based on some standard criteria which are the followin
 
   ## keyword Shortcuts that are available in the website
 
-  | Shortcut action | Shortcut in Windows | Shortcut in Mac |
-
-  |----------|:-------------:|:-------------:|
-
-  | Save File | CTRL + S | COMMAND + S |
-
-  | Run Current Editor Query | CTRL + ENTER | COMMAND + RETURN |
-
-  | Terminate Running Query | ESC | ESC |
-
-  | Show/Hide the sidebar | CTRL + B | COMMAND + B |
-
-  | Show/Hide error log section | CTRL + J | COMMAND + J |
-
-  | Format current editor input | CTRL + H | COMMAND + H |
-
-  | Increase Editor Font Size | CTRL + "+" | COMMAND + "+" |
-
-  | Decrease Editor Font Size | CTRL + "-" | COMMAND + "-" |
-
-  | Toggle editor layout mode | CTRL + / | COMMAND + / |
+| Shortcut action             | Shortcut in Windows | Shortcut in Mac  |
+| --------------------------- | :------------------ | :--------------: |
+| Save File                   | CTRL + S            |   COMMAND + S    |
+| Run Current Editor Query    | CTRL + ENTER        | COMMAND + RETURN |
+| Terminate Running Query     | ESC                 |       ESC        |
+| Show/Hide the sidebar       | CTRL + B            |   COMMAND + B    |
+| Show/Hide error log section | CTRL + J            |   COMMAND + J    |
+| Format current editor input | CTRL + H            |   COMMAND + H    |
+| Increase Editor Font Size   | CTRL + "+"          |  COMMAND + "+"   |
+| Decrease Editor Font Size   | CTRL + "-"          |  COMMAND + "-"   |
+| Toggle editor layout mode   | CTRL + /            |   COMMAND + /    |
