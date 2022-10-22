@@ -23,9 +23,6 @@ Online SQL Editor is an online lightweight, easy to use and feature-rich sql edi
 
 **Vue.js** is the main technology being used in this project alongside with pure css for the styling the website.
 
-- Vue.js: used as backbone of the entire project architecture
-- Pure CSS: No third party libraries is being used
-
 ### All Third party libraries used with their purpose explained:
 
 - @vueuse: a very usefull vue.js library the contains a bunch of helper components and features that helps and speeds up the development process.
@@ -38,7 +35,7 @@ Online SQL Editor is an online lightweight, easy to use and feature-rich sql edi
 
 # Page Load Time
 
-The page load is measured based on some standard criteria which are the following
+The page load is measured based on some standard criteria which are the following:
 
 - **Largest Contentful Paint (LCP)**: took an average of 0.5s - 1.3s based on different tools (2.5s or lower is considered as good UX and fast page load)
 - **Cumulative Layout Shift (CLS)**: took absolute zero (0.1 or less is considered as good UX)
