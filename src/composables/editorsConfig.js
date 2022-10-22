@@ -40,14 +40,7 @@ const data = reactive({
       saved: true,
     },
   ],
-  selectedTab: {
-    id: 1,
-    name: "Get All Users",
-    open: true,
-    editable: false,
-    sqlTextarea: "",
-    saved: true,
-  },
+  selectedTab: 1,
   deleteTabModalStatus: false,
 });
 
@@ -55,11 +48,10 @@ watch(
   () => data.editorInput,
   (text) => {
     const activeEditorTab = data.tabs.find(
-      (tab) => tab.id === data.selectedTab.id
+      (tab) => tab.id === data.selectedTab
     );
 
     if (activeEditorTab.sqlTextarea !== text) {
-      data.selectedTab.saved = false;
       activeEditorTab.saved = false;
       activeEditorTab.sqlTextarea = text;
     }
@@ -113,7 +105,7 @@ const onTabClick = (selectedTabId) => {
   data.tabs.forEach((tab) => {
     if (selectedTabId === tab.id) {
       tab.open = true;
-      data.selectedTab = tab;
+      data.selectedTab = tab.id;
       data.editorInput = tab.sqlTextarea;
     } else {
       tab.open = false;
@@ -124,18 +116,20 @@ const onTabClick = (selectedTabId) => {
 const onTabDoubleClick = async (selectedTabId) => {
   // if there is an open rename tab with no name, don't allow the user to rename another tab
   if (data.tabs.some((tab) => tab.name === "" && tab.editable)) return;
+  data.selectedTab = selectedTabId;
 
   data.tabs.forEach((tab) => {
     if (selectedTabId === tab.id) tab.editable = true;
     else tab.editable = false;
   });
+
   await nextTick();
   document.getElementById(`tab_${selectedTabId}`).focus();
 };
 
-const onRenameComplete = (selectedTabId) => {
+const onRenameComplete = () => {
   // if the current editing tab name is empty, don't allow the user to dave it
-  const selectedTab = data.tabs.find((tab) => tab.id === selectedTabId);
+  const selectedTab = data.tabs.find((tab) => tab.id === data.selectedTab);
   if (selectedTab.name === "") return;
 
   if (
@@ -150,24 +144,26 @@ const onRenameComplete = (selectedTabId) => {
   }
 };
 
-const openDeleteTabModal = (selectedTabId) => {
-  data.selectedTab = data.tabs.find((tab) => tab.id === selectedTabId);
+const openDeleteTabModal = () => {
   data.deleteTabModalStatus = true;
 };
 
 const deleteTab = () => {
-  if (data.selectedTab.open) {
-    const nextTab = data.tabs.find((tab) => tab.id > data.selectedTab.id);
+  const activeEditorTab = data.tabs.find((tab) => tab.id === data.selectedTab);
+
+  console.log(activeEditorTab);
+  if (activeEditorTab.open) {
+    const nextTab = data.tabs.find((tab) => tab.id > activeEditorTab.id);
     if (nextTab) {
       nextTab.open = true;
     } else {
-      const prevTab = data.tabs.find((tab) => tab.id < data.selectedTab.id);
+      const prevTab = data.tabs.find((tab) => tab.id < activeEditorTab.id);
       if (prevTab) {
         prevTab.open = true;
       }
     }
   }
-  data.tabs = data.tabs.filter((tab) => tab.id !== data.selectedTab.id);
+  data.tabs = data.tabs.filter((tab) => tab.id !== activeEditorTab.id);
   data.deleteTabModalStatus = false;
 };
 
@@ -185,16 +181,11 @@ const addNewTab = () => {
   });
   data.tabs.push(newTab);
   onTabDoubleClick(newTab.id);
-
-  data.selectedTab = newTab;
 };
 
 const saveTab = () => {
-  const activeEditorTab = data.tabs.find(
-    (tab) => tab.id === data.selectedTab.id
-  );
+  const activeEditorTab = data.tabs.find((tab) => tab.id === data.selectedTab);
   activeEditorTab.saved = true;
-  data.selectedTab.saved = true;
 };
 
 export default () => ({

@@ -1,14 +1,19 @@
 <script setup>
 import useEditorsConfig from "../../composables/editorsConfig";
-const { editorFontSize, editorInput } = useEditorsConfig();
+const { editorFontSize, editorInput, tabs } = useEditorsConfig();
 </script>
 
 <template>
   <div class="sql-editor-container">
     <textarea
-      placeholder="Enter SQL expresion here..."
+      :placeholder="
+        tabs.length
+          ? 'Enter SQL expresion here...'
+          : 'You must have an active tab to write SQL'
+      "
       v-model="editorInput"
       class="editor"
+      :disabled="!tabs.length"
     ></textarea>
   </div>
 </template>

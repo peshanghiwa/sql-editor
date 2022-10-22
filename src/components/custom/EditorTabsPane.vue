@@ -21,7 +21,7 @@ const {
       v-for="tab in tabs"
       @click="onTabClick(tab.id)"
       @dblclick="onTabDoubleClick(tab.id)"
-      v-on-click-outside="() => onRenameComplete(tab.id)"
+      v-on-click-outside="() => tab.editable && onRenameComplete(tab.id)"
       class="tab-container"
       :class="{
         active: tab.open,
@@ -46,7 +46,7 @@ const {
         <BIconCircleFill v-if="!tab.saved" class="icon icon-sm" />
         <button
           v-if="!tab.editable"
-          @click="openDeleteTabModal(tab.id)"
+          @click="openDeleteTabModal"
           class="btn btn-secondary delete-button"
         >
           <BIconTrashFill class="icon icon-md" />
