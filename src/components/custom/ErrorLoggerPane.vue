@@ -1,10 +1,18 @@
-<script scoped></script>
+<script setup>
+import useEditorsConfig from "../../composables/editorsConfig";
+
+const { errorLog } = useEditorsConfig();
+</script>
 
 <template>
-  <div class="error-log-container">
-    You have an error in your SQL syntax; check the manual that corresponds to
-    your MySQL server version for the right syntax to use near 'SELECT count(*)
-    FROM MyTable' at line 1
+  <div v-if="errorLog" class="error-log-container">
+    {{ errorLog }}
+  </div>
+
+  <div v-else class="error-log-container empty-error">
+    Errors pane, all the sql errors are going to appear here. <br />
+    To trigger an SQL error try executing this statement
+    <strong> "Select. * from users" </strong>
   </div>
 </template>
 
@@ -16,5 +24,9 @@
   color: var(--text-color);
   background-color: var(--background-color-2);
   font-size: 14px;
+}
+
+.empty-error {
+  opacity: 0.7;
 }
 </style>

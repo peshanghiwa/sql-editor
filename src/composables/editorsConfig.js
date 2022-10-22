@@ -1,6 +1,9 @@
 import { reactive, toRefs, computed, nextTick, watch } from "vue";
 import { format } from "sql-formatter";
 import usersJson from "../assets/data/users.json";
+import useSplitpaneConfig from "./splitpaneConfig";
+
+const { openLogPane } = useSplitpaneConfig();
 
 const data = reactive({
   editorInput: "",
@@ -53,6 +56,7 @@ const data = reactive({
   deleteTabModalStatus: false,
   queryRunnings: false,
   currentQueryResult: [],
+  errorLog: "",
 });
 
 watch(
@@ -76,11 +80,16 @@ const selectedTab = computed(() =>
 const beautifyEditorInput = () => {
   if (!data.editorInput) return;
 
-  data.editorInput = format(data.editorInput, {
-    language: "sql",
-    tabWidth: 2,
-    keywordCase: "upper",
-  });
+  try {
+    data.editorInput = format(data.editorInput, {
+      language: "sql",
+      tabWidth: 2,
+      keywordCase: "upper",
+    });
+  } catch (error) {
+    data.errorLog = error;
+    openLogPane();
+  }
 };
 
 const changeEditorFontSize = (type) => {
@@ -213,6 +222,18 @@ const saveEditorInput = () => {
 };
 
 const runQuery = () => {
+  try {
+    format(data.editorInput, {
+      language: "sql",
+      tabWidth: 2,
+      keywordCase: "upper",
+    });
+  } catch (error) {
+    data.errorLog = error;
+    openLogPane();
+    return;
+  }
+
   data.queryRunnings = true;
   const randomTime = Math.floor(Math.random() * 2000) + 2000;
 

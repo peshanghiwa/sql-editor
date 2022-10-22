@@ -40,7 +40,7 @@ const showFullColumn = (columnName) => {
         <th>City</th>
         <th>Country</th>
       </tr>
-      <tr v-for="(user, index) in currentQueryResult" :key="user.id">
+      <tr v-for="(user, index) in currentQueryResult" :key="user.id" v-once>
         <td
           @dblclick="showFullColumn(`number_${user.id}`)"
           :id="`number_${user.id}`"
