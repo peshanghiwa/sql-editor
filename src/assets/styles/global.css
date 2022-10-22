@@ -1,4 +1,4 @@
-/* Global Styles */
+/* Global Styles and Utility classes */
 :root {
   --primary-color: #41b883;
   --primary-color-hover: #238f5e;
@@ -8,6 +8,7 @@
   --background-color-3: #303030;
   --text-color: #fff;
   --text-color-disabled: #6e6e6e;
+  --text-edit-color: #e5e5e5;
 }
 ::-webkit-scrollbar {
   height: 8px;

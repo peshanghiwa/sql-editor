@@ -1,9 +1,7 @@
 <script setup>
-import { nextTick, ref } from "vue";
 import { vOnClickOutside } from "@vueuse/components";
 import { BIconTrashFill, BIconCircleFill } from "bootstrap-icons-vue";
 import useEditorsConfig from "../../composables/editorsConfig";
-
 const {
   tabs,
   deleteTabModalStatus,
@@ -120,23 +118,22 @@ const {
 
 .tab-container.active {
   background-color: var(--background-color-3);
-  color: #fff;
+  color: var(--text-color);
   border-inline-start: 5px solid var(--primary-color-active);
 }
 
 .tab-container.editable {
-  background-color: #e5e5e5;
-  color: black;
+  background-color: var(--text-edit-color);
 }
 
 .tab-container.editable .tab {
   cursor: text;
-  color: black;
+  color: var(--background-color);
 }
 
 .tab-container.invalid {
   background-color: rgb(255, 113, 113);
-  color: #fff;
+  color: #fff !important;
 }
 
 .tab-actions {
