@@ -6,6 +6,10 @@
   fill: var(--text-color-disabled);
 }
 
+.icon-xl {
+  height: 40px;
+  width: 40px;
+}
 .icon-lg {
   height: 20px;
   width: 20px;

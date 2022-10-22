@@ -25,6 +25,10 @@ const {
   saveTab,
   selectedTab,
   editorInput,
+  runQuery,
+  queryRunnings,
+  killQuery,
+  currentQueryResult,
 } = useEditorsConfig();
 
 const { theme, setTheme } = useThemeConfig();
@@ -36,13 +40,27 @@ const { theme, setTheme } = useThemeConfig();
       <BIconList class="icon icon-lg" />
     </button>
 
-    <button class="btn btn-secondary action-button">
-      <BIconPlayFill class="icon icon-lg" />
+    <button
+      @click="runQuery"
+      :disabled="!editorInput || queryRunnings"
+      class="btn btn-secondary action-button"
+    >
+      <BIconPlayFill
+        class="icon icon-lg"
+        :class="{ disabled: !editorInput || queryRunnings }"
+      />
       <span class="button-text"> Run </span>
     </button>
 
-    <button class="btn btn-secondary action-button" disabled>
-      <BIconStopFill class="icon icon-lg disabled" />
+    <button
+      @click="killQuery"
+      class="btn btn-secondary action-button"
+      :disabled="!queryRunnings"
+    >
+      <BIconStopFill
+        class="icon icon-lg"
+        :class="{ disabled: !queryRunnings }"
+      />
       <span class="button-text"> Kill </span>
     </button>
 
@@ -71,8 +89,16 @@ const { theme, setTheme } = useThemeConfig();
       <span class="button-text"> Logs </span>
     </button>
 
-    <button class="btn btn-secondary action-button">
-      <BIconFileEarmarkFill class="icon icon-md" />
+    <button
+      class="btn btn-secondary action-button"
+      :disabled="!currentQueryResult.length"
+    >
+      <BIconFileEarmarkFill
+        class="icon icon-md"
+        :class="{
+          disabled: !currentQueryResult.length,
+        }"
+      />
       <span class="button-text"> CSV </span>
     </button>
 

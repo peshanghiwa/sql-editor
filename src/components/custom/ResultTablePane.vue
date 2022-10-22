@@ -1,7 +1,10 @@
 <script setup>
 import { ref } from "vue";
-// import users from "../assets/users.json";
-const users = [];
+import { BIconArrowRepeat } from "bootstrap-icons-vue";
+import useEditorsConfig from "../../composables/editorsConfig";
+import StopWatch from "../helper/StopWatch.vue";
+
+const { queryRunnings, currentQueryResult } = useEditorsConfig();
 
 const openedFullColumn = ref(null);
 const showFullColumn = (columnName) => {
@@ -17,8 +20,13 @@ const showFullColumn = (columnName) => {
 </script>
 
 <template>
-  <div class="result-table-container">
-    <table v-if="users.length !== 0">
+  <div class="result-table-container" :class="{ overflow: !queryRunnings }">
+    <div v-if="queryRunnings" class="table-loading">
+      <div class="blur-background"></div>
+      <BIconArrowRepeat class="icon icon-xl animate-rotation" />
+      <StopWatch />
+    </div>
+    <table v-if="currentQueryResult.length !== 0">
       <tr class="table-header">
         <th>#</th>
         <th>Id</th>
@@ -32,7 +40,7 @@ const showFullColumn = (columnName) => {
         <th>City</th>
         <th>Country</th>
       </tr>
-      <tr v-for="(user, index) in users" :key="user.id">
+      <tr v-for="(user, index) in currentQueryResult" :key="user.id">
         <td
           @dblclick="showFullColumn(`number_${user.id}`)"
           :id="`number_${user.id}`"
@@ -104,7 +112,35 @@ const showFullColumn = (columnName) => {
 <style scoped>
 .result-table-container {
   height: 100%;
+  position: relative;
+}
+.overflow {
   overflow: auto;
+}
+
+.table-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.blur-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  /* opacity: 0.5; */
+  filter: blur(5px);
+  backdrop-filter: blur(5px);
 }
 
 table {
@@ -114,7 +150,7 @@ table {
 table,
 th,
 td {
-  border: 1px solid rgb(151, 151, 151);
+  border: 1px solid var(--text-color-disabled);
   border-collapse: collapse;
 }
 
@@ -131,7 +167,7 @@ th {
 }
 
 th {
-  background-color: #303030;
+  background-color: var(--background-color-3);
 }
 
 tr {
@@ -142,7 +178,7 @@ td {
 }
 
 tr:hover {
-  background-color: #4a4a4a;
+  background-color: var(--background-color-3);
 }
 
 th:nth-child(1) {
@@ -151,7 +187,7 @@ th:nth-child(1) {
 
 /* select every first td of th */
 tr td:nth-child(1) {
-  background-color: #303030;
+  background-color: var(--background-color-3);
   width: 60px;
   cursor: default;
 }

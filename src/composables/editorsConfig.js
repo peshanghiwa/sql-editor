@@ -1,5 +1,6 @@
 import { reactive, toRefs, computed, nextTick, watch } from "vue";
 import { format } from "sql-formatter";
+import usersJson from "../assets/data/users.json";
 
 const data = reactive({
   editorInput: "",
@@ -42,6 +43,8 @@ const data = reactive({
   ],
   selectedTabId: 1,
   deleteTabModalStatus: false,
+  queryRunnings: false,
+  currentQueryResult: [],
 });
 
 watch(
@@ -201,6 +204,20 @@ const saveTab = () => {
   activeEditorTab.saved = true;
 };
 
+const runQuery = () => {
+  data.queryRunnings = true;
+  const randomTime = Math.floor(Math.random() * 2000) + 2000;
+
+  setTimeout(() => {
+    data.queryRunnings = false;
+    data.currentQueryResult = usersJson;
+  }, randomTime);
+};
+
+const killQuery = () => {
+  data.queryRunnings = false;
+};
+
 export default () => ({
   ...toRefs(data),
   beautifyEditorInput,
@@ -212,6 +229,8 @@ export default () => ({
   deleteTab,
   addNewTab,
   saveTab,
+  runQuery,
+  killQuery,
   selectedTab,
   disabledTypeButtons,
 });
