@@ -58,6 +58,10 @@ watch(
   }
 );
 
+const selectedTab = computed(() =>
+  data.tabs.find((tab) => tab.id === data.selectedTabId)
+);
+
 const beautifyEditorInput = () => {
   if (!data.editorInput) return;
 
@@ -203,5 +207,6 @@ export default () => ({
   deleteTab,
   addNewTab,
   saveTab,
+  selectedTab,
   disabledTypeButtons,
 });
