@@ -17,11 +17,19 @@ const data = reactive({
   ],
   tabs: [
     {
-      id: 1,
-      name: "Get All Users",
+      id: 0,
+      name: "Blank Tab",
       open: true,
       editable: false,
       sqlTextarea: "",
+      saved: true,
+    },
+    {
+      id: 1,
+      name: "Get All Users",
+      open: false,
+      editable: false,
+      sqlTextarea: "SELECT * FROM users",
       saved: true,
     },
     {
@@ -29,7 +37,7 @@ const data = reactive({
       name: "Get All Universities",
       open: false,
       editable: false,
-      sqlTextarea: "",
+      sqlTextarea: "SELECT * FROM universities",
       saved: true,
     },
     {
@@ -37,11 +45,11 @@ const data = reactive({
       name: "Get All Departments",
       open: false,
       editable: false,
-      sqlTextarea: "",
+      sqlTextarea: "SELECT * FROM departments",
       saved: true,
     },
   ],
-  selectedTabId: 1,
+  selectedTabId: 0,
   deleteTabModalStatus: false,
   queryRunnings: false,
   currentQueryResult: [],
@@ -197,7 +205,7 @@ const addNewTab = () => {
   onTabDoubleClick(newTab.id);
 };
 
-const saveTab = () => {
+const saveEditorInput = () => {
   const activeEditorTab = data.tabs.find(
     (tab) => tab.id === data.selectedTabId
   );
@@ -228,7 +236,7 @@ export default () => ({
   openDeleteTabModal,
   deleteTab,
   addNewTab,
-  saveTab,
+  saveEditorInput,
   runQuery,
   killQuery,
   selectedTab,

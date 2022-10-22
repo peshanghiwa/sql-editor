@@ -22,7 +22,7 @@ const {
   beautifyEditorInput,
   changeEditorFontSize,
   disabledTypeButtons,
-  saveTab,
+  saveEditorInput,
   selectedTab,
   editorInput,
   runQuery,
@@ -66,7 +66,7 @@ const { theme, setTheme } = useThemeConfig();
 
     <button
       class="btn btn-secondary action-button"
-      @click="saveTab"
+      @click="saveEditorInput"
       :disabled="selectedTab?.saved"
     >
       <BIconSave2Fill

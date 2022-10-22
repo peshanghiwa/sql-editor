@@ -36,7 +36,6 @@ const interval = ref(
 
 onBeforeUnmount(() => {
   clearInterval(interval.value);
-  console.log("interval closed");
 });
 </script>
 
