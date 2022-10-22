@@ -40,7 +40,7 @@ const data = reactive({
       saved: true,
     },
   ],
-  selectedTab: 1,
+  selectedTabId: 1,
   deleteTabModalStatus: false,
 });
 
@@ -48,7 +48,7 @@ watch(
   () => data.editorInput,
   (text) => {
     const activeEditorTab = data.tabs.find(
-      (tab) => tab.id === data.selectedTab
+      (tab) => tab.id === data.selectedTabId
     );
 
     if (activeEditorTab.sqlTextarea !== text) {
@@ -105,7 +105,7 @@ const onTabClick = (selectedTabId) => {
   data.tabs.forEach((tab) => {
     if (selectedTabId === tab.id) {
       tab.open = true;
-      data.selectedTab = tab.id;
+      data.selectedTabId = tab.id;
       data.editorInput = tab.sqlTextarea;
     } else {
       tab.open = false;
@@ -116,7 +116,7 @@ const onTabClick = (selectedTabId) => {
 const onTabDoubleClick = async (selectedTabId) => {
   // if there is an open rename tab with no name, don't allow the user to rename another tab
   if (data.tabs.some((tab) => tab.name === "" && tab.editable)) return;
-  data.selectedTab = selectedTabId;
+  data.selectedTabId = selectedTabId;
 
   data.tabs.forEach((tab) => {
     if (selectedTabId === tab.id) tab.editable = true;
@@ -129,7 +129,7 @@ const onTabDoubleClick = async (selectedTabId) => {
 
 const onRenameComplete = () => {
   // if the current editing tab name is empty, don't allow the user to dave it
-  const selectedTab = data.tabs.find((tab) => tab.id === data.selectedTab);
+  const selectedTab = data.tabs.find((tab) => tab.id === data.selectedTabId);
   if (selectedTab.name === "") return;
 
   if (
@@ -149,7 +149,9 @@ const openDeleteTabModal = () => {
 };
 
 const deleteTab = () => {
-  const activeEditorTab = data.tabs.find((tab) => tab.id === data.selectedTab);
+  const activeEditorTab = data.tabs.find(
+    (tab) => tab.id === data.selectedTabId
+  );
 
   console.log(activeEditorTab);
   if (activeEditorTab.open) {
@@ -184,7 +186,9 @@ const addNewTab = () => {
 };
 
 const saveTab = () => {
-  const activeEditorTab = data.tabs.find((tab) => tab.id === data.selectedTab);
+  const activeEditorTab = data.tabs.find(
+    (tab) => tab.id === data.selectedTabId
+  );
   activeEditorTab.saved = true;
 };
 
