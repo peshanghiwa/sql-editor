@@ -128,7 +128,9 @@ const onTabDoubleClick = async (selectedTabId) => {
   });
 
   await nextTick();
-  document.getElementById(`tab_${selectedTabId}`).focus();
+  const renameInput = document.getElementById(`tab_${selectedTabId}`);
+  renameInput.focus();
+  renameInput.select();
 };
 
 const onRenameComplete = () => {
@@ -157,15 +159,18 @@ const deleteTab = () => {
     (tab) => tab.id === data.selectedTabId
   );
 
-  console.log(activeEditorTab);
   if (activeEditorTab.open) {
     const nextTab = data.tabs.find((tab) => tab.id > activeEditorTab.id);
     if (nextTab) {
       nextTab.open = true;
+      data.selectedTabId = nextTab.id;
+      data.editorInput = nextTab.sqlTextarea;
     } else {
       const prevTab = data.tabs.find((tab) => tab.id < activeEditorTab.id);
       if (prevTab) {
         prevTab.open = true;
+        data.selectedTabId = prevTab.id;
+        data.editorInput = prevTab.sqlTextarea;
       }
     }
   }

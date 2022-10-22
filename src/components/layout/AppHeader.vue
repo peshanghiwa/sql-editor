@@ -49,11 +49,11 @@ const { theme, setTheme } = useThemeConfig();
     <button
       class="btn btn-secondary action-button"
       @click="saveTab"
-      :disabled="selectedTab.saved"
+      :disabled="selectedTab?.saved"
     >
       <BIconSave2Fill
         class="icon icon-md"
-        :class="{ disabled: selectedTab.saved }"
+        :class="{ disabled: selectedTab?.saved }"
       />
       <span class="button-text"> Save </span>
     </button>

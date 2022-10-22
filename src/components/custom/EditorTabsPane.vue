@@ -162,13 +162,9 @@ const {
   flex-direction: column;
   margin: 0 1rem;
   padding: 1rem;
-  border: 1px solid #e2e8f0;
+  border: none;
   border-radius: 0.25rem;
-  background: #fff;
-}
-.modal__title {
-  color: black;
-  font-weight: 700;
+  background: var(--background-color-3);
 }
 .modal__buttons {
   display: flex;
@@ -177,5 +173,10 @@ const {
   width: 100%;
   margin-top: 1rem;
   gap: 5px;
+}
+
+.modal__title {
+  color: var(--text-color);
+  font-weight: 700;
 }
 </style>
